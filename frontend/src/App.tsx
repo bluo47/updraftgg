@@ -5,8 +5,9 @@ import About from './components/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Search from './components/Search';
-import Matches from './components/Matches'; // Assuming Matches is similar to Search
-import Settings from './components/Settings'; // Assuming you have a Settings component
+import Matches from './components/Matches';
+import Settings from './components/Settings';
+import "./assets/fonts/Lexend/Lexend-Medium.ttf";
 
 const App: React.FC = () => {
     return (
@@ -17,7 +18,7 @@ const App: React.FC = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/search" element={<Search />} />
-                    <Route path="/matches" element={<Matches />} /> {/* Assuming Matches is similar to Search */}
+                    <Route path="/matches" element={<Matches />} />
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
                 <Footer />

@@ -1,111 +1,30 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-const headerStyle: React.CSSProperties = {
-    width: '100%',
-    background: 'rgba(255,255,255,0.95)',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    zIndex: 100,
-};
-
-const navStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '64px',
-};
-
-const ulStyle: React.CSSProperties = {
-    display: 'flex',
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-    gap: '2rem',
-};
-
-const linkStyle: React.CSSProperties = {
-    textDecoration: 'none',
-    color: '#357ae8',
-    fontWeight: 500,
-    fontSize: '1.1rem',
-    padding: '0.5rem 1rem',
-    borderRadius: '6px',
-    transition: 'background 0.2s, color 0.2s',
-    cursor: 'pointer',
-};
-
-const linkHoverStyle: CSSProperties = {
-    background: '#e3f0ff',
-    color: '#174ea6',
-};
-
-const activeLinkStyle: React.CSSProperties = {
-    background: '#e3f0ff',
-    color: '#174ea6',
-};
-
-const logoContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    marginRight: '2rem',
-    height: '40px',
-};
-
-const logoStyle: React.CSSProperties = {
-    height: '40px',
-    width: '40px',
-    background: 'transparent',
-    borderRadius: '8px',
-    filter: 'brightness(0) saturate(100%) invert(0)'
-};
-
-const brandTextStyle: React.CSSProperties = {
-    fontFamily: '"Segoe UI", "Arial Black", "Arial", sans-serif',
-    fontWeight: 900,
-    fontSize: '1.6rem',
-    letterSpacing: '2px',
-    color: '#222',
-    marginLeft: '0.75rem',
-    userSelect: 'none',
-};
-
-const settingsIconStyle: React.CSSProperties = {
-    fontSize: '1.7rem',
-    marginLeft: '2rem',
-    color: '#357ae8',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    transition: 'color 0.2s',
-    alignSelf: 'center'
-};
 
 const Header: React.FC = () => {
     const location = useLocation();
     const [hovered, setHovered] = React.useState<string | null>(null);
 
     return (
-        <header style={headerStyle}>
-            <nav style={navStyle}>
-                <div style={logoContainerStyle}>
+        <header className="w-full bg-white bg-opacity-95 shadow-md fixed top-0 left-0 z-50">
+            <nav className="flex justify-center items-center h-16">
+                <div className="flex items-center mr-8 h-10">
                     <img
                         src="/logo.png"
                         alt="Logo"
-                        style={logoStyle}
+                        className="h-10 w-10 rounded-lg"
                     />
-                    <span style={brandTextStyle}>UPDRAFT.GG</span>
+                    <span className="font-black text-2xl tracking-wider text-gray-900 ml-3 select-none font-sans">
+                        UPDRAFT.GG
+                    </span>
                 </div>
-                <ul style={ulStyle}>
+                <ul className="flex list-none m-0 p-0 gap-8">
                     <li>
                         <Link
                             to="/"
-                            style={{
-                                ...linkStyle,
-                                ...(hovered === 'home' ? linkHoverStyle : {}),
-                                ...(location.pathname === '/' ? activeLinkStyle : {}),
-                            }}
+                            className={`no-underline font-medium text-blue-600 text-lg px-4 py-2 rounded-md transition-colors cursor-pointer
+                                ${hovered === 'home' ? 'bg-blue-100 text-blue-900' : ''}
+                                ${location.pathname === '/' ? 'bg-blue-100 text-blue-900' : ''}`}
                             onMouseEnter={() => setHovered('home')}
                             onMouseLeave={() => setHovered(null)}
                         >
@@ -115,11 +34,9 @@ const Header: React.FC = () => {
                     <li>
                         <Link
                             to="/about"
-                            style={{
-                                ...linkStyle,
-                                ...(hovered === 'about' ? linkHoverStyle : {}),
-                                ...(location.pathname === '/about' ? activeLinkStyle : {}),
-                            }}
+                            className={`no-underline font-medium text-blue-600 text-lg px-4 py-2 rounded-md transition-colors cursor-pointer
+                                ${hovered === 'about' ? 'bg-blue-100 text-blue-900' : ''}
+                                ${location.pathname === '/about' ? 'bg-blue-100 text-blue-900' : ''}`}
                             onMouseEnter={() => setHovered('about')}
                             onMouseLeave={() => setHovered(null)}
                         >
@@ -129,11 +46,9 @@ const Header: React.FC = () => {
                     <li>
                         <Link
                             to="/search"
-                            style={{
-                                ...linkStyle,
-                                ...(hovered === 'search' ? linkHoverStyle : {}),
-                                ...(location.pathname === '/search' ? activeLinkStyle : {}),
-                            }}
+                            className={`no-underline font-medium text-blue-600 text-lg px-4 py-2 rounded-md transition-colors cursor-pointer
+                                ${hovered === 'search' ? 'bg-blue-100 text-blue-900' : ''}
+                                ${location.pathname === '/search' ? 'bg-blue-100 text-blue-900' : ''}`}
                             onMouseEnter={() => setHovered('search')}
                             onMouseLeave={() => setHovered(null)}
                         >
@@ -143,11 +58,9 @@ const Header: React.FC = () => {
                     <li>
                         <Link
                             to="/matches"
-                            style={{
-                                ...linkStyle,
-                                ...(hovered === 'matches' ? linkHoverStyle : {}),
-                                ...(location.pathname === '/matches' ? activeLinkStyle : {}),
-                            }}
+                            className={`no-underline font-medium text-blue-600 text-lg px-4 py-2 rounded-md transition-colors cursor-pointer
+                                ${hovered === 'matches' ? 'bg-blue-100 text-blue-900' : ''}
+                                ${location.pathname === '/matches' ? 'bg-blue-100 text-blue-900' : ''}`}
                             onMouseEnter={() => setHovered('matches')}
                             onMouseLeave={() => setHovered(null)}
                         >
@@ -157,7 +70,7 @@ const Header: React.FC = () => {
                 </ul>
                 <Link
                     to="/settings"
-                    style={settingsIconStyle}
+                    className="text-blue-600 text-2xl ml-8 cursor-pointer transition-colors hover:text-blue-900"
                     title="Settings"
                 >
                     &#9881;
